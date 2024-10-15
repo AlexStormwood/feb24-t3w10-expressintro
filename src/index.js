@@ -27,9 +27,9 @@ app.post("/bananas", (request, response) => {
 	});
 });
 
-const {router} = require("./controllers/pokemonController.js");
+const PokemonController = require("./controllers/pokemonController.js");
 // localhost:3000/pokemon/
-app.use("/pokemon", router);
+app.use("/pokemon", PokemonController);
 
 const PORT = 3000;
 
