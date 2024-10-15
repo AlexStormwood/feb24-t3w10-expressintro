@@ -14,6 +14,19 @@ app.get("/", (request, response) => {
 	});
 });
 
+app.post("/", (request, response) => {
+	response.json({
+		message: "POST request received!"
+	});
+});
+
+// http://localhost:3000/bananas
+app.post("/bananas", (request, response) => {
+	response.json({
+		message: "POST bananas received!"
+	});
+});
+
 const PORT = 3000;
 
 app.listen(PORT, () => {
