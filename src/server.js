@@ -7,10 +7,36 @@ const app = express();
 // GET localhost:3000/ 
 // .get("/", (req, res) => {})
 // .get("/", (banana, elephant) => {})
-app.get("/", (request, response) => {
+
+/*
+instance.verb(routePath,
+	middleware 1,
+	middleware 2,
+	middleware 3,
+	middleware 4,
+	route handler
+	)
+*/
+
+function xanderMiddleware (request, response, next){
+	console.log("Xander middleware is now running!");
+	request.coolCoderAcademyStuff = {
+		...request.coolCoderAcademyStuff,
+		xander: "cool programmer!"
+	};
+	// This doesn't work because request.coolCoderAcademyStuff wasn't defined yet 
+	// request.coolCoderAcademyStuff.xander = "cool programmer!"
+	next();
+}
+
+app.get("/", 
+	// middleware function goes here
+	xanderMiddleware,
+	(request, response) => {
 	// response.send("<h1>Hello world!</h1>");
 	response.json({
-		message:"Hello world!"
+		message:"Hello world!",
+		customStuff: request.coolCoderAcademyStuff
 	});
 });
 
