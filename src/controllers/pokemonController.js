@@ -1,4 +1,5 @@
 const express = require('express');
+const { getOrCreatePokemonNumber, getPokeApiData } = require('../middleware/pokeApiMiddleware');
 
 // Create an instance of just a router, not a full server 
 const router = express.Router();
@@ -20,6 +21,21 @@ router.get("/random", async (request, response) => {
 
 	response.json({
 		result: pokemonData
+	});
+});
+
+router.get(
+	"/randommiddleware", 
+	// Middleware goes here
+	getOrCreatePokemonNumber,
+	getPokeApiData,
+
+
+
+	// Middleware is finished by this point 
+	(request, response) => {
+	response.json({
+		result: "todo!"
 	});
 });
 
