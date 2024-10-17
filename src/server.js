@@ -64,6 +64,10 @@ const PokemonController = require("./controllers/pokemonController.js");
 // localhost:3000/pokemon/
 app.use("/pokemon", PokemonController);
 
+const UserController = require("./controllers/userController.js");
+// domainName:port/users
+app.use("/users", UserController);
+
 module.exports = {
 	app
 }
